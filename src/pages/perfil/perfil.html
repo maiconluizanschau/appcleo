@@ -1,0 +1,32 @@
+
+<!--perfil-->
+<ion-content >
+    
+  <div *ngIf="currentUser" id="profile-info" padding>
+
+    <h3 id="profile-name">{{currentUser.name}},&nbsp;{{currentUser.idade}}</h3>
+    <img id="profile-image" [src]="currentUser.photo || 'assets/images/no-photo.png'">  
+    
+    <p class="profile-description">
+      {{currentUser.sobre}}<br/>
+      {{currentUser.genero}}<br/>
+      {{currentUser.local}}
+    </p> 
+    <ion-row>
+      <ion-label (click)= "onConfig()">
+        Configurar
+      </ion-label>
+      <ion-label (click)="onEditarPerfil()">
+        Editar
+      </ion-label>
+      <ion-label (click)="flert()">
+          Avaliação
+        </ion-label>
+      </ion-row>
+  
+  </div>
+</ion-content>
+
+<ion-footer>
+  <ion-toolbar color="primary"><img id="image-cleo" src="assets/images/cleo_logo.png"/></ion-toolbar>
+</ion-footer>

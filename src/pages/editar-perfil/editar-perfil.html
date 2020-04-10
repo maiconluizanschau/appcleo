@@ -1,0 +1,51 @@
+          <ion-header>
+            <ion-navbar>
+                <ion-title>Editar Perfil</ion-title>
+                <ion-buttons end>
+                  <button ion-button icon-only (click)="changePicture()"  large color="light">
+                    <ion-icon name="camera"></ion-icon>
+                  </button>
+                </ion-buttons>
+            </ion-navbar>
+        </ion-header>
+        <ion-footer>
+            <ion-toolbar color="primary">
+                <img id="image-cleo" src="assets/images/cleo_logo.png" />
+            </ion-toolbar>
+        </ion-footer>
+
+
+  <ion-content *ngIf="currentUser">
+  <div style="text-align: center;">
+    <h3 id="profile-name">{{currentUser.name}}&nbsp;{{currentUser.sobrenome}},&nbsp;{{currentUser.idade}}</h3>
+    <img id="profile-image" [src]="currentUser.photo || 'assets/images/no-photo.png'">
+  </div>
+ <!-- <div style="margin-top: 10%">
+        <ion-slides>
+          <ion-slide>
+              <img style="width: 30%; border-radius: 50%" [src]="currentUser.photo || 'assets/images/no-photo.png'">
+              <img style="width: 30%; border-radius: 50%" [src]="currentUser.photo || 'assets/images/no-photo.png'"> 
+              <img style="width: 30%; border-radius: 50%" [src]="currentUser.photo || 'assets/images/no-photo.png'">
+          </ion-slide>
+        </ion-slides>
+  </div> -->
+  <br>
+  <br>
+  <div align="center">  
+      <ion-icon *ngIf="!canEditSobre" name='md-create' (click)="canEditSobre = !canEditSobre" item-start> Biografia:</ion-icon>
+     
+       <br>
+     {{currentUser.sobre}}
+    </div>
+        <form (ngSubmit)="onSubmit(currentUser.sobre)" *ngIf="canEditSobre" #profileForm="ngForm">
+          <ion-item color="fundo">
+            <ion-textarea rows="4" name="sobre" [(ngModel)]="currentUser.sobre" required minlenght="1" autosize ></ion-textarea>
+          </ion-item>
+          <button full ion-button default-button type="submit" [disabled]="profileForm.form.invalid">
+            <ion-icon name="md-checkmark"></ion-icon>
+          </button>
+        </form>
+       
+     
+    </ion-content>
+      

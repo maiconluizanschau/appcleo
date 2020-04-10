@@ -1,0 +1,19 @@
+<br>
+<br>
+<br>
+<br>
+<ion-list *ngIf="grupo"  no-margin >
+    <ion-item item-bcg  (click)="onChatCreate(c)">
+        <ion-avatar item-left>
+          <img [src]="(grupo)?.photo">
+        </ion-avatar>
+        <h2 item-title> Maico {{ grupo.$key }}  </h2>
+        <ion-icon icon-small item-right>
+          <i class="icon"></i>
+        </ion-icon>
+        <p>  hoje {{ grupo.name }} </p>
+        <ng-template #customMessage>
+          <p>Sem mensagen</p>
+        </ng-template>
+    </ion-item>
+  </ion-list>

@@ -1,0 +1,32 @@
+https://www.youtube.com/watch?v=Idu9EJPSxiY
+
+
+const rootRef = firebase.database.ref();
+const ateendees = db.child('enventesSttenrse/fm');
+
+let handles =[]
+ateendees.on('child_added',snap=>
+{
+  let userref =db.child('users/'+snap.key);
+  let fn = userref.on('value',userSnap=>{
+
+  })
+  handles.push(fn);
+});
+
+handles.forEach(fn => userref.off('value',fn));
+
+/////////////////////
+const enveKey = "=sdfdAaAJJIBSFD";
+   const rootRef = firebase.database().ref();
+   const attendeesRef = rootRef.child('eventAttendees');
+   const usersRef = rootRef.child('users');
+
+   function get(key, cb){
+     attendeesRef.child(key).on('child_added',snap=>{
+       let userRef = usersRef.child(snap.key);
+       userRef.once('value',cb);
+     })
+   }
+
+   get(enveKey, snap => console.log(snap.val()))

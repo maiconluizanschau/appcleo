@@ -1,0 +1,35 @@
+<ion-header>
+  <ion-navbar>
+    <custom-logged-header (click)="abrirPerfilMatch(recipient)" *ngIf="recipient" [title]="pageTitle" [user]="recipient"></custom-logged-header>
+    <custom-logged-header (click)="abrirPerfilGrupo(recipientGroup)" *ngIf="recipientGroup" [title]="pageTitle" [user]="recipientGroup"></custom-logged-header>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding   *ngIf="!mostrarMembrosView">
+  <message-box *ngFor="let m of messages | async" [message]="m" [isFromSender]="(m.userId === sender.$key)"></message-box>
+</ion-content>
+
+
+<ion-footer *ngIf="!ativarGrupo && !mostrarMembrosView">
+  <ion-toolbar >
+    <ion-item no-lines color="fundo">
+      <ion-input type="text" (keyup.enter)="sendMessage(newMessage); newMessage=''" placeholder="Mensagem..." [(ngModel)]="newMessage"></ion-input>
+      <button ion-button item-end (click)="sendMessage(newMessage); newMessage=''">
+        <ion-icon name="send"></ion-icon>
+      </button>
+    </ion-item>
+  </ion-toolbar>
+</ion-footer>
+
+<ion-footer *ngIf="ativarGrupo && !mostrarMembrosView">
+  <ion-toolbar >
+    <ion-item no-lines color="fundo">
+      <ion-input type="text" (keyup.enter)="sendMessageGroup(newMessage); newMessage=''" placeholder="Mensagem..." [(ngModel)]="newMessage"></ion-input>
+      <button ion-button item-end (click)="sendMessageGroup(newMessage); newMessage=''">
+        <ion-icon name="send"></ion-icon>
+      </button>
+    </ion-item>
+  </ion-toolbar>
+</ion-footer>
+

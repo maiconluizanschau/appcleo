@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-navbar>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content no-padding *ngIf="UserMatch2">
+  <ion-card>
+    <img [src]="UserMatch2.photo || 'assets/images/no-photo.png'"/>
+    <ion-card-content>
+      <ion-card-title>
+        {{UserMatch2.name}}, {{UserMatch2.idade}}
+        </ion-card-title>
+      <p>{{UserMatch2.sobre}}</p>
+      <p><ion-icon name="pin"></ion-icon> {{UserMatch2.local}}</p>
+      <p><ion-icon name="school"></ion-icon> Cursando Publicidade e Propaganda</p>
+      <p><ion-icon name="clipboard"></ion-icon> Bolsista ITEC</p>
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+    <ion-card-content>
+      <h4>Eu gosto de:</h4>
+      <ion-badge item-end *ngIf="UserGostos.cinema===true" >Cinema</ion-badge> <ion-badge item-end *ngIf="UserGostos.cafe===true">Café</ion-badge> <ion-badge item-end *ngIf="UserGostos.bar == true">Barzinho</ion-badge> <ion-badge item-end *ngIf="UserGostos.leitura == true">Leitura</ion-badge> <ion-badge item-end *ngIf="UserGostos.arlivre == true">Ar Livre</ion-badge><ion-badge item-end *ngIf="UserGostos.restaurante == true">Restaurante</ion-badge>
+    </ion-card-content>
+  </ion-card>
+  <ion-item ion-item text-center color="fundo" *ngIf="verPerfilHome!=true">
+      <button ion-button color="primary" full (click)="avaliar(UserMatch2)">Avaliar</button>
+      <button ion-button color="danger" full (click)="desfazerMatch(i, UserMatch2)">Desfazer Match</button>   
+  </ion-item>
+</ion-content>

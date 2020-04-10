@@ -1,0 +1,77 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Avaliação</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-footer>
+  <ion-toolbar color="primary">
+    <img id="image-cleo" src="assets/images/cleo_logo.png" />
+  </ion-toolbar>
+</ion-footer>
+
+<ion-content>
+
+  <ion-card>
+    <ion-item>
+      <ion-avatar item-start>
+        <img [src]="(user)?.photo">
+      </ion-avatar>
+      <h2>{{user?.name}} {{user?.sobrenome}} &middot; {{user?.idade}}</h2>
+    </ion-item>
+  </ion-card>
+
+
+  <ion-card>
+    <ion-card-header text-center>
+      Conversa
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item no-padding text-center>
+        <rating [(ngModel)]="conversa" readOnly="false" max="5" emptyStarIconName="star-outline" halfStarIconName="star-half" starIconName="star"
+          nullable="false">
+        </rating>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header text-center>
+      Beleza
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item no-padding text-center>
+        <rating [(ngModel)]="beleza" readOnly="false" max="5" emptyStarIconName="star-outline" halfStarIconName="star-half" starIconName="star"
+          nullable="false">
+        </rating>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header text-center>
+      Simpatia
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item no-padding text-center>
+        <rating [(ngModel)]="simpatia" readOnly="false" max="5" emptyStarIconName="star-outline" halfStarIconName="star-half" starIconName="star"
+          nullable="false">
+        </rating>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      Comentário
+    </ion-card-header>
+    <ion-card-content>
+      <ion-item no-padding>
+        <ion-textarea autosize [(ngModel)]="comentario" placeholder="Deixe aqui seu comentário..."></ion-textarea>
+      </ion-item>
+    </ion-card-content>
+  </ion-card>
+  <ion-item>
+    <button ion-button block (click)="voto()">Enviar Avaliações</button>
+  </ion-item>
+</ion-content>

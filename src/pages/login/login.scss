@@ -1,0 +1,63 @@
+page-login {
+	/*  #Style Wizard Big image
+	===========================================*/
+	 // background imagem fundo+opacidade
+	 .login-content{
+		 background-size: cover;
+		 background-position: center;
+		 -webkit-filter: opacity(70%); 
+		 filter: opacity(70%); 			 
+	}
+	
+	//Mostrar o logo da CLEO
+	.label-logo{
+		text-align: center;
+		margin-left: 20px;
+		margin-right: 20px;
+	}
+	//descrição texto termos
+	.label-description{
+		color: black;
+		font-size: 100%;
+		text-align: center;
+		font-weight: bold;
+		margin-top: 80px;
+	}
+	//texto info
+	.label-info{
+		color: #101907;
+		font-size: 90%;
+		text-align: center;
+	}
+	.top-row{
+		color: black;
+		height: 70%;
+		display: inline;
+	}
+	
+	.bottom-row{
+		height: 20%;
+		display: inline;	
+	}
+	//cor header botao
+	.toolbar-background {
+		background-color:#f8c300;
+	  }
+	//cor link
+	a:link {
+		color: #ab09aa;
+		
+	}
+	//titulo+logo
+	ion-title {
+		position: absolute;
+		top: 0;
+		left: 0;
+		padding: 0 90px 1px;
+		width: 100%;
+		height: 100%;
+		text-align: center;
+	}
+}
+	
+	

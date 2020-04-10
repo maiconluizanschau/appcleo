@@ -1,0 +1,64 @@
+page-editar-perfil {
+    a {
+		text-decoration: none;
+	}
+	.toolbar-background {
+		background-color: #f9f5e3;
+	}
+	.content {
+		background: #f9f5e3;
+	}
+	#fonte {
+		color: black;
+	}
+	
+	.botao {
+		border: 1px solid #f53d3d;
+	}
+	#label {
+		font-size: 0.75em;
+	}
+	#image-cleo {
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+	}
+  
+  .content{
+    background:#f9f5e3;
+  }
+
+  
+  #profile-image {
+    display: block;
+    //width: 60%;
+    margin: 0 auto 0;
+    //margin-top: 50%;
+    overflow: hidden;
+    box-shadow: 0.6px 0.6px 7px #f8c300; 
+    border-radius: 50%;
+    /* sombra deslocada em 3px para baixo e 3px para direita, borrada em 5px e com cor cinza */
+    background-size: cover; 
+    /*ajusta a imagem dentro do div, mantendo a proporção da imagem */
+  }
+
+  #profile-info {
+    position: absolute;
+    width: 100%;
+    z-index: 2;
+    text-align: center;
+  }
+  #profile-name {
+    color: #444;
+    font-size: 20px;    
+  }
+  .profile-description {
+    font-size: 15px;
+    //mudar cor padrao depois ver codigo photoshop
+   // color: #888;
+    background:#f9f5e3;
+    text-align: center;
+  }
+  
+
+}

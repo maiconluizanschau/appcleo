@@ -1,0 +1,42 @@
+<ion-header>
+  <ion-navbar>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content no-padding *ngIf="grupo">
+  <ion-card>
+    <img [src]="grupo.photo || 'assets/images/no-photo.png'"/>
+    <ion-card-content>
+      <ion-card-title>
+        {{grupo.name}}
+        </ion-card-title>
+      <p>{{grupo.descricao}}</p>
+      <p><ion-icon name="pin"></ion-icon> {{grupo.local}}</p>
+    </ion-card-content>
+  </ion-card>
+  <ion-card>
+    <ion-grid>
+        <ion-row>
+          <ion-col col-12 >
+            <h4>Membros</h4>
+            <ion-list  no-margin>
+              <ion-list>
+                <ion-item *ngFor="let c of membros | async" color="fundo">
+                  <ion-avatar item-start>
+                    <img [src]="c.photo || 'assets/images/no-photo.jpg'">
+                  </ion-avatar>
+                  <h2>{{ c.name }}</h2>
+                </ion-item>
+              </ion-list>
+              <ion-item ion-item text-center color="fundo">
+                <button clear ion-button (click)="sairGrupo(grupo)" id="fonteSair">Sair do Grupo&emsp;
+                    <ion-icon name="exit"></ion-icon>
+                </button>
+              </ion-item>
+            </ion-list>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card>
+</ion-content>

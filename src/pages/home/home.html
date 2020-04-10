@@ -1,0 +1,32 @@
+<ion-footer>
+    <ion-toolbar color="primary">
+        <img id="image-cleo" src="assets/images/cleo_logo.png" />
+    </ion-toolbar>
+</ion-footer>
+
+
+<ion-content>
+    <div text-center>
+        <ion-badge item-end >{{tipoConversa}}</ion-badge>
+    </div>
+    <div *ngIf="!flerts && !new_match" color="fundo">
+        <div *ngIf="!roleFalse || !conversaFalse || !relacionamentoFalse" color="fundo">
+            <flash-card *ngIf="!relacionamentoFalse" [user]="user" [tipoConversa]="tipoConversa" [acabou]="acabou" ></flash-card>
+            <flash-card *ngIf="!conversaFalse" [user]="user" [tipoConversa]="tipoConversa" [acabouUserAmizade]="acabouUserAmizade"></flash-card>
+            <flash-card *ngIf="!roleFalse" [grupo]="grupo" [tipoConversa]="tipoConversa" [acabouGrupo]="acabouGrupo" ></flash-card>
+        </div>
+    </div>
+    <!-- Abaixo component com tela de novo Match-->
+    <new-match *ngIf="new_match" [userLogado]="userLogado" [userMatch]="userMatch" ></new-match>
+    <div *ngIf="roleFalse && conversaFalse && relacionamentoFalse">   
+        <div class="cleolikes">
+            <ion-item color="fundo">
+                <div align="center">   
+                    <img width="200" src="assets/images/home/no_match.png">
+                </div>
+            </ion-item>
+            <p>Escolha uma das opções</p>
+            <p>em Configurações</p>
+        </div>
+    </div>
+</ion-content>

@@ -1,0 +1,44 @@
+<ion-content class="cards-bg">
+  <div class="pyro">
+    <br>
+    <br>
+
+    <ion-row>
+      <ion-col text-center>
+        <img class="animated zoomIn" id="profile-image" [src]="(userMatch)?.photo">
+
+      </ion-col>
+    </ion-row>
+    <div class="before"></div>
+    <div class="after"></div>
+
+
+    <ion-card-content>
+      <ion-card-title id="novoMatch">
+        Você deu Like em {{ userMatch.name }} !
+      </ion-card-title>
+      <p id="novoMatchMensagem">
+        Que tal vocês conversarem um pouco??
+      </p>
+    </ion-card-content>
+
+    <ion-row no-padding>
+      <ion-col text-center>
+        <button ion-button clear small color="danger" icon-start (click)="chat(userMatch)">
+          <ion-icon name='ios-chatbubbles'></ion-icon>
+          Abrir chat
+        </button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row no-padding>
+      <ion-col text-center>
+        <button ion-button clear small color="danger" icon-start (click)="home()">
+          <ion-icon name='md-arrow-back'></ion-icon>
+          Voltar
+        </button>
+      </ion-col>
+    </ion-row>
+  </div>
+
+</ion-content>

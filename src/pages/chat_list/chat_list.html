@@ -1,0 +1,175 @@
+<!--
+  <ion-header>
+  <custom-logged-header [title]="view | capitalize:true"></custom-logged-header>
+  <ion-toolbar>
+    <ion-segment large color="light" [(ngModel)]="view">
+      <ion-segment-button value="secrets">
+        Conversas Secretas
+      </ion-segment-button>
+      <ion-segment-button value="flerts">
+        Meus Flerts
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+  <ion-toolbar>
+    <ion-searchbar (ionInput)="filterItems($event)"></ion-searchbar>
+  </ion-toolbar>
+</ion-header>
+-->
+<ion-content>
+  <ion-toolbar>
+    <ion-segment large color="dark" [(ngModel)]="view">
+      <ion-segment-button value="secrets">
+     Secretas
+      </ion-segment-button>
+      <ion-segment-button value="flerts">
+        Conversas
+      </ion-segment-button>
+      <ion-segment-button value="groups">
+        Grupos
+      </ion-segment-button>
+    </ion-segment>
+  </ion-toolbar>
+  <!--<ion-toolbar>
+    <ion-searchbar placeholder="Pesquisar" (ionInput)="filterItems($event)"></ion-searchbar>
+  </ion-toolbar>-->
+
+  <ion-grid no-padding>
+    <ion-row [ngSwitch]="view">
+      <ion-col col-12>
+        <ion-list no-margin *ngSwitchCase="'secrets'">
+          <ion-item item-bcg *ngFor='let chat of chatSecret | async' (click)="openChaSecret(chat)">
+            <ion-avatar item-left >
+              <img [src]="chat.photo || 'assets/images/no-photo.png'">
+            </ion-avatar>
+            <h2 item-title>{{ chat.title}}</h2> <ion-badge *ngIf="chat.passou48h == 'true'" color="primary" item-end >+48h</ion-badge>
+            <ion-badge *ngIf="chat.passou48h == 'false'" color="danger" item-end >48h</ion-badge>
+            <ion-icon icon-small item-right>
+              <i class="icon"></i>
+            </ion-icon>
+            <p *ngIf="chat.lastMessage; else customMessage">{{ chat.timestamp | date:'dd/MM/y H:mm' }} - {{ chat.lastMessage }}</p>
+               <!-- contorno vermelho que da para usar para mostrar quantidade de msg
+                    <div class="rating">
+                            <ion-icon icon="md-star"></ion-icon>
+                            
+                          </div>
+                          <button ion-button clear item-end>
+                            <span class="number-circle">5</span>
+                          </button>
+                        -->
+                        
+            <ng-template #customMessage>
+              <p>Sem Mensagens</p>  
+            </ng-template>
+          </ion-item>
+          <div *ngIf="meusChatsSecrets.length < 1">
+            <!-- teste para ver se precisa ou nao
+            <ion-card class="card-stack" no-lines 
+            -->
+                <div class="row "> 
+                    <ion-col col-2></ion-col>
+                    <ion-col col-8>
+                        <ion-item >
+                          <img width="200" src="assets/images/home/no_match.png">
+                        </ion-item>
+                        <ion-card-title  id="novoMatchAviso">
+                           Sem Conversas! 
+                        </ion-card-title>
+                    </ion-col>
+                </div>
+                <!--
+            </ion-card>
+          -->
+          </div>
+        </ion-list>
+        <ion-list  no-margin *ngSwitchCase="'flerts'">
+          <ion-item item-bcg *ngFor="let c of chats | async" (click)="onChatCreate(c)"  no-lines>
+              <!--<ion-item-sliding #item>
+                <ion-item ion-item color="fundo"> -->
+                  <ion-avatar item-left>
+                    <img [src]="c.photo || 'assets/images/no-photo.jpg'">
+                  </ion-avatar>
+                  <h2 item-title>{{ c.title }}</h2>
+                  <ion-icon icon-small item-right>
+                    <i class="icon"></i>
+                  </ion-icon>
+                  <p *ngIf="c.lastMessage; else customMessage">{{ c.timestamp | date:'dd/MM/y H:mm' }} - {{ c.lastMessage }}</p>
+                  <ng-template #customMessage>
+                    <p>Sem mensagen</p>
+                  </ng-template>
+               <!-- </ion-item>
+                <ion-item-options>
+                    <button color="fundo" large ion-button (click)="avaliar(card)">
+                        <ion-icon name="star" style="color: #ab09aa"></ion-icon>
+                    </button> 
+                    <button color="fundo" large ion-button (click)="desfazerFlert(i, c)">
+                        <ion-icon name="trash" style="color: #f53d3d"></ion-icon>
+                    </button>
+                    <button color="fundo" large item-end ion-button (click)="openChat(card)">
+                        <ion-icon name="ios-chatbubbles" style="color: #f8c300"></ion-icon>
+                    </button>
+                </ion-item-options> 
+              </ion-item-sliding> -->
+          </ion-item>
+          <div *ngIf="meusFlerts.length < 1">
+            <!---
+            <ion-card class="card-stack" no-lines>
+            -->
+                <div class="row "> 
+                    <ion-col col-2></ion-col>
+                    <ion-col col-8>
+                        <ion-item >
+                          <img width="200" src="assets/images/home/no_match.png">   
+                        </ion-item>
+                        <ion-card-title  id="novoMatchAviso">
+                           Sem Likes! 
+                        </ion-card-title>
+                    </ion-col>
+                </div>
+                <!--
+            </ion-card>
+          -->
+          </div>
+        </ion-list>
+        <ion-list  no-margin *ngSwitchCase="'groups'">
+          <ion-item item-bcg *ngFor="let g of groups | async"  (click)="onChatGroupCreate(g)">
+              <ion-avatar item-left>
+                <img [src]="g.photo || 'assets/images/no-photo.jpg'">
+              </ion-avatar>
+              <h2 item-title>{{ g.name }}</h2>
+              <ion-icon icon-small item-right>
+                <i class="icon"></i>
+              </ion-icon>
+             <p *ngIf="g.timestamp; else customMessage" >{{ g.timestamp | date:'dd/MM/y H:mm' }} - {{ g.lastMessage }}</p>
+              <ng-template #customMessage>
+                <p>Sem mensagem</p>
+              </ng-template>
+          </ion-item>
+          <div *ngIf="meusGrupos.length < 1">
+            <!---
+            <ion-card class="card-stack" no-lines>
+            -->
+                <div class="row "> 
+                    <ion-col col-2></ion-col>
+                    <ion-col col-8>
+                        <ion-item >
+                          <img width="200" src="assets/images/home/no_match.png">   
+                        </ion-item>
+                        <ion-card-title  id="novoMatchAviso">
+                           Sem Grupos! 
+                        </ion-card-title>
+                    </ion-col>
+                </div>
+                <!--
+            </ion-card>
+          -->
+          </div>
+        </ion-list>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-content>
+<ion-footer>
+  <ion-toolbar color="primary"><img id="image-cleo" src ="assets/images/cleo_logo.png"/></ion-toolbar>
+</ion-footer>

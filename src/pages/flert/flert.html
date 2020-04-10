@@ -1,0 +1,105 @@
+<ion-header>
+    <ion-navbar>
+        <ion-title>Avaliação</ion-title>
+    </ion-navbar>
+</ion-header>
+
+<ion-content>
+    <ion-card>
+        <h3 id="texto">Confira sua avaliação média dentro do App Cleo, 
+        para saber mais detalhes sobre o que seus Matchs estão falando sobre você
+        toque no botão abaixo.</h3>
+    </ion-card>
+    <ion-card>
+        <ion-card-header text-center>
+        Conversa {{pontuacaoMediaConversa}}
+        </ion-card-header>
+        <ion-card-content>
+        <ion-item no-padding text-center>
+            <rating [(ngModel)]="conversa" readOnly="false" max="5" emptyStarIconName="star-outline" halfStarIconName="star-half" starIconName="star"
+            nullable="false">
+            </rating>
+        </ion-item>
+        </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+        <ion-card-header text-center>
+        Beleza {{pontuacaoMediaBeleza}}
+        </ion-card-header>
+        <ion-card-content>
+        <ion-item no-padding text-center>
+            <rating [(ngModel)]="beleza" readOnly="true" max="5" emptyStarIconName="star-outline" halfStarIconName="star-half" starIconName="star"
+            nullable="false" rating="5">
+            </rating>
+        </ion-item>
+        </ion-card-content>
+    </ion-card>
+
+    <ion-card>
+        <ion-card-header text-center>
+        Simpatia {{pontuacaoMediaSimpatia}}
+        </ion-card-header>
+        <ion-card-content>
+        <ion-item no-padding text-center>
+            <rating [(ngModel)]="simpatia" readOnly="false" max="5" emptyStarIconName="star" halfStarIconName="star-half" starIconName="star"
+            nullable="false">
+            </rating>
+        </ion-item>
+        </ion-card-content>
+    </ion-card>
+    <ion-item ion-item text-center color="fundo">
+        <button ion-button color="secundary" full (click)="desfazerMatch(i, UserMatch2)">Quero saber o que estão falando sobre mim</button>
+    </ion-item>
+</ion-content>
+
+<ion-footer>
+    <ion-toolbar color="primary">
+        <img id="image-cleo" src="assets/images/cleo_logo.png" />
+    </ion-toolbar>
+</ion-footer>
+
+<!--    <ion-content padding>
+        <ion-list *ngFor="let card of userList ; let i = index; " no-lines>
+            <ion-item-sliding #item>
+                <ion-item ion-item color="fundo">
+                    <ion-avatar item-start>
+                        <img *ngIf="card.photo" [src]="card.photo">
+                    </ion-avatar>
+                    <h2>{{ card.name }} {{ card.sobrenome }} &middot; {{ card.idade }}</h2>
+                </ion-item>
+                <ion-item-options>
+                    <button color="fundo" large ion-button (click)="avaliar(card)">
+                        <ion-icon name="star" style="color: #ab09aa"></ion-icon>
+                    </button>
+                    
+                    <button color="fundo" large ion-button (click)="desfazerFleat(i, card)">
+                        <ion-icon name="trash" style="color: #f53d3d"></ion-icon>
+                    </button>
+    
+                    <button color="fundo" large item-end ion-button (click)="openChat(card)">
+                        <ion-icon name="ios-chatbubbles" style="color: #f8c300"></ion-icon>
+                    </button>
+                
+                </ion-item-options>
+            </ion-item-sliding>
+        </ion-list>
+        <div *ngIf="!userList.length">
+                <div class="row" color="fundo" >
+                    <ion-col col-1></ion-col>
+                    <ion-col col-10 color="fundo" >
+                        <ion-item color="fundo">
+                            <img width="220" src="assets/images/inicial/passivo/no-match.png">
+                        </ion-item>
+                        <ion-card-title id="novoMatchAviso">
+                            Nenhum Like!
+                        </ion-card-title>
+                    </ion-col>
+                </div>
+            <!-- Animação -->
+            <!--<lottie-animation-view [options]="lottieConfig" [width]="500" [height]="500"> 
+        
+                </lottie-animation-view> -->
+<!--        </div>
+    
+    </ion-content> -->

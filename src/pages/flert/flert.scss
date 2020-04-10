@@ -1,0 +1,61 @@
+page-flert {
+
+  ul {
+    padding: 0px;
+    &.rating li {
+      padding: 5px 10px !important;
+      background: none;
+      color: #ffb400;
+      ion-icon {
+        font-size: 30px;
+      }
+    }
+  }
+  
+	#image-cleo {
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+  }
+  
+  #texto{
+      text-align: justify;
+      text-indent: 25px;
+      line-height: 1.3;
+      font-family: Snell Roundhand, cursive;
+      font-style: italic;
+      font-weight: bold;
+  }
+/**  .item-ios {
+    padding-left: 0px; //border-radius: 04%;
+   
+    ion-avatar img {
+      width: 60px;
+      height: 60px; // margin:20px;
+      // border-radius: 50%;
+      overflow: hidden;
+      box-shadow: 0.6px 0.6px 7px #AB09AA;
+      /* sombra deslocada em 3px para baixo e 3px para direita, borrada em 5px e com cor cinza */
+      //background-size: cover;
+      /*ajusta a imagem dentro do div, mantendo a proporção da imagem */
+      //    background:#f9f5e3;
+    //}
+    //ion-avatar[item-start] {
+      //margin: 0px 30px 8px 0; //   background:#f9f5e3;
+    //} ///caso for colocar um contador de msg nao lidas 
+  //} //fundo 
+/**  .content {
+    background:#f9f5e3;
+  }
+  #novoMatchAviso {
+    text-align: center;
+    font-size: 40px;
+    font-family: Snell Roundhand, cursive;
+    font-style: italic;
+  }
+  #image-cleo {
+		display: block;
+		margin-left: auto;
+		margin-right: auto;
+	} **/
+}
